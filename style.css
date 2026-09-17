@@ -1,0 +1,201 @@
+:root {
+  --bg-primary: #1e1e2f;
+  --bg-secondary: #2a2a3a;
+  --bg-accent: #3b3b5c;
+  --text-primary: #e0e0ff;
+  --text-secondary: #c0c0d0;
+  --accent: #6c5ce7;
+  --accent-hover: #7d6ef5;
+  --border-radius: 0.5rem;
+  --transition: 0.3s ease;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-primary: #f5f5f9;
+    --bg-secondary: #e0e0ed;
+    --bg-accent: #d0d0e5;
+    --text-primary: #2b2b3b;
+    --text-secondary: #4b4b5b;
+    --accent: #5e4bff;
+    --accent-hover: #7365ff;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.todo-app {
+  max-width: 480px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: var(--bg-secondary);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.todo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todo-header h1 {
+  font-size: 1.5rem;
+  color: var(--accent);
+}
+
+.todo-counter {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.todo-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: var(--border-radius);
+  background-color: var(--bg-accent);
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.todo-input::placeholder {
+  color: var(--text-secondary);
+}
+
+.todo-input:focus {
+  outline: none;
+  background-color: var(--bg-secondary);
+}
+
+.todo-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-accent);
+  padding: 0.75rem 1rem;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+}
+
+.todo-item:hover {
+  background-color: var(--bg-secondary);
+}
+
+.todo-checkbox {
+  appearance: none;
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 2px solid var(--accent);
+  border-radius: 0.2rem;
+  margin-right: 0.75rem;
+  position: relative;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.todo-checkbox:checked {
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+.todo-checkbox:checked::after {
+  content: '✔';
+  color: #fff;
+  font-size: 0.9rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.todo-text {
+  flex: 1;
+  font-size: 1rem;
+  color: var(--text-primary);
+  word-break: break-word;
+}
+
+.todo-item.completed .todo-text {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.todo-delete {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: var(--transition);
+  padding: 0.2rem;
+  margin-left: 0.5rem;
+}
+
+.todo-delete:hover {
+  color: var(--accent-hover);
+}
+
+.toggle-dark {
+  background: none;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: var(--transition);
+}
+
+.toggle-dark:hover {
+  background-color: var(--accent);
+  color: #fff;
+}
+
+/* Scrollbar styling for WebKit */
+.todo-list::-webkit-scrollbar {
+  width: 8px;
+}
+.todo-list::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+  border-radius: var(--border-radius);
+}
+.todo-list::-webkit-scrollbar-thumb {
+  background-color: var(--accent);
+  border-radius: var(--border-radius);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .todo-app {
+    margin: 1rem;
+    padding: 1rem;
+  }
+  .todo-header h1 {
+    font-size: 1.3rem;
+  }
+}
